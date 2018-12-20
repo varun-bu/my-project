@@ -1,3 +1,4 @@
+# vim sls file
 vim:
   pkg:
     - installed
