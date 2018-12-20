@@ -1,12 +1,12 @@
 wp_zip_file_download:
   archive.extracted:
-    - name: /var/www/wordpress
-    - source: https://wordpress.org/latest.tar.gz
+    - name: {{ pillar['wp_path'] }}
+    - source: {{ pillar['wp_download_source'] }}
     - skip_verify: True
 
 directory_permissions:
   file.directory:
-    - name: /var/www/wordpress
+    - name: {{ pillar['wp_path'] }}
     - user: www-data
     - group: www-data
     - dir_mode: 755
@@ -17,10 +17,9 @@ directory_permissions:
 
 config_file_management:
   file.managed:
-    - name: /var/www/wordpress/wp-config.php
+    - name: {{ pillar['wp_path'] }}/wp-config.php
     - source: salt://website-config.php
 
-nginx:
+{{ pillar['service'] }}:
   service.running:
-    - enable: True
     - reload: True

@@ -1,1 +1,0 @@
-To install Nginx from its default repositories, you must add the repository keys to Ubuntu. Doing this tells the Ubuntu machine that the repositories the packages are being downloaded from are trusted.
