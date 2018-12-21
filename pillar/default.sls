@@ -12,10 +12,8 @@ wp_download_source: 'https://wordpress.org/latest.tar.gz'
 service: 'nginx'
 nginx_repo_source: 'deb http://ppa.launchpad.net/nginx/stable/ubuntu bionic main'
 
-mysql-server:
-  - mysql-client
-  - mysql-server: 5.7.24-0ubuntu0.18.04.1
-
-php_packages:
-  - php-fpm: 7.2.10-0ubuntu0.18.04.1
-  - php-mysql
+user_list:
+  - local
+  - backup
+  - remote
+  - restore
