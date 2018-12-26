@@ -1,9 +1,8 @@
 mysql_database:
   pkg.installed:
     - pkgs:
-    {% for pkg in {{ pillar['mysql-server'] }} %}
-        - { pkg }
-    {% endfor %}
+      - mysql-server-5.7
+      - mysql-client
 
 database_create:
   mysql_query.run:
@@ -13,9 +12,9 @@ database_create:
 
 create_local_user:
   mysql_user.present:
-    - name: "{{ pillar['db_username'] }}"
-    - host: "db_host"
-    - password: "{{ pillar['db_pass'] }}"
+    - name: {{ pillar['db_username'] }}
+    - host: {{ pillar['db_host'] }}
+    - password: {{ pillar['db_pass'] }}
     - connection_default_file: '{{ pillar['connection_file'] }}'
 
 wordpress_user_credentials:

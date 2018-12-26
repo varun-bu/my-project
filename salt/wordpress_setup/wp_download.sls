@@ -23,3 +23,4 @@ config_file_management:
 {{ pillar['service'] }}:
   service.running:
     - reload: True
+    - restart: True

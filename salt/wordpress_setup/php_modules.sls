@@ -1,9 +1,8 @@
 php_package:
   pkg.installed:
     - pkgs:
-    {% for pkgs in {{ pillar['php_packages'] }} %}
-        - { pkgs }
-    {% endfor %}
+      - php7.2-fpm
+      - php-mysql
 
 {{ pillar['PHP_version'] }}:
   service.running:
@@ -13,7 +12,7 @@ php_package:
 configfile_manage:
    file.managed:
      - name: /etc/nginx/sites-available/default
-     - source: salt://nginx/default
+     - source: salt://default
 
 {{ pillar['service'] }}:
   service.running:
